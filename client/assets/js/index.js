@@ -39,8 +39,26 @@ async function renderPost(id) {
 
     const section = document.getElementById('main-content');
     section.textContent = ''
-    const postData = await getData(id)
-    console.log(postData.post)
+    let postData = await getData(id)
+    postData = postData.post
 
+    const post = document.createElement('div')
+    const postTitle = document.createElement('h1')
+    const postAuthor = document.createElement('h6')
+    const postDate = document.createElement('h6')
+    const postContent = document.createElement('p')
+
+    postTitle.textContent = postData.title
+    postAuthor.textContent = postData.author
+
+    postDate.textContent = new Date(postData.date * 1000).toLocaleDateString("en-GB");
+    postContent.textContent = postData.content
+
+    post.appendChild(postTitle)
+    post.appendChild(postAuthor)
+    post.appendChild(postDate)
+    post.appendChild(postContent)
+
+    section.appendChild(post)
     
 }
