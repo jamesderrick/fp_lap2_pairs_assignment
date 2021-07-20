@@ -1,6 +1,6 @@
 let url = window.location.href;
 if(url.includes('#')) {
-    const id = url.split('/').pop(); 
+    const id = url.split('#').pop(); 
     renderPost(id);
 } else {
     let form = document.getElementById('postForm');
@@ -24,7 +24,7 @@ async function postData(e) {
     const response = await fetch('http://localhost:3000/', options)
     const json = await response.json()
 
-    window.location.replace(`/#posts/${json.post}`);
+    window.location.replace(`/#${json.post}`);
     location.reload();
 
 };
@@ -41,24 +41,45 @@ async function renderPost(id) {
     section.textContent = ''
     let postData = await getData(id)
     postData = postData.post
+    const date = new Date(postData.date * 1000)
 
     const post = document.createElement('div')
     const postTitle = document.createElement('h1')
-    const postAuthor = document.createElement('h6')
-    const postDate = document.createElement('h6')
+
+    const postMeta = document.createElement('address')
+    const postAuthor = document.createElement('a')
+    const postDate = document.createElement('time')
+
     const postContent = document.createElement('p')
+
+    post.classList.add('container')
+
+    postDate.setAttribute('datetime',date.toISOString()) 
 
     postTitle.textContent = postData.title
     postAuthor.textContent = postData.author
-
-    postDate.textContent = new Date(postData.date * 1000).toLocaleDateString("en-GB");
+    postAuthor.rel = 'Author'
+    postDate.textContent = formatDate(date)
     postContent.textContent = postData.content
 
+    postMeta.append(postAuthor)
+    postMeta.append(postDate)
+
     post.appendChild(postTitle)
-    post.appendChild(postAuthor)
-    post.appendChild(postDate)
+    post.appendChild(postMeta)
     post.appendChild(postContent)
 
     section.appendChild(post)
     
+}
+
+function formatDate(date) {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    const month = monthNames[date.getMonth()];
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    const output = day  + '\n'+ month  + ',' + year;
+
+    return output
 }

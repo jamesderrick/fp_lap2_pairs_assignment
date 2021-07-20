@@ -1,0 +1,109 @@
+html {
+    font-family: CustomSansSerif,'Lucida Grande',Arial,sans-serif
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 767px;
+    margin: auto;
+    padding: 21px 0;
+    position: relative;
+}
+
+#postForm input[id="postTitle"],
+#postForm input[id="postAuthor"],
+#postForm input[id="postContent"],
+#postForm textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    margin: 21px 21px 12px;
+    position: relative;
+}
+
+#postForm input[type="submit"] {
+    position: absolute;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 2px solid #333;
+    border-radius: 16px;
+    cursor: pointer;
+    margin: 0 0 15px;
+    background-color: #fff;
+    padding: 4px 12px;
+    left: 50%;
+    top:0;
+    right: 0;
+    margin: 46px 0 0 376px;
+}
+
+#postForm input:focus,
+#postForm textarea:focus {
+    outline: none;
+}
+
+#postForm #postTitle {
+    font-size: 32px;
+}
+
+#postForm h1 {
+    position: relative;
+}
+
+#postForm h1::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: attr(data-placeholder);
+    color: rgba(0,0,0,.44);
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#postForm input[id="postTitle"]::after {
+    position: absolute;
+    content: attr(data-label);
+    color: rgba(0,0,0,.44);
+    border-right: 1px solid rgba(0,0,0,.15);
+    right: 100%;
+    top: -6px;
+    bottom: -6px;
+    padding: 6px 12px;
+    font-weight: 400;
+    margin: 0 21px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .15s ease;
+}
+
+.container h1 {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    margin: 21px 21px 12px;
+    line-height: 34px;
+}
+
+address {
+    font-size: 15px;
+    line-height: 18px;
+    color: #79828B;
+    margin: 12px 21px;
+    font-style: normal;
+}
+
+address time::before {
+    content: '\2022';
+    padding: 0 7px;
+}
+
+.container p {
+    margin: 12px 21px;
+}
