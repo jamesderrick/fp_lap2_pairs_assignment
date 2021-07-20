@@ -11,7 +11,7 @@ class Post {
         this.author = data.author
         this.content = data.content
         this.date = Math.floor(date.getTime() / 1000)
-        this.url = `${data.title}-${date.getDate()}-${date.getMonth() + 1}`
+        this.url = `${data.title.replace(/ /g,"-").toLowerCase()}-${date.getDate()}-${date.getMonth() + 1}`
     }
 
     // static get all() {
@@ -49,7 +49,6 @@ class Post {
             try {
                 const db = await init();
                 let postData = await db.collection('posts').find({ url: id }).toArray()
-console.log(postData);
                 let post = new Post({...postData[0], id: postData[0]._id});
                 resolve (post);
             } catch (err) {
