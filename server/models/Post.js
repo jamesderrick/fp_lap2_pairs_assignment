@@ -3,7 +3,7 @@ const { ObjectId } = require('mongodb')
 
 class Post {
 
-    constructor(data, titleCount){
+    constructor(data){
 
         const date = new Date()
 
