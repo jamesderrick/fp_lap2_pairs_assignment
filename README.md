@@ -18,7 +18,7 @@ Usage
 
 Client Side
 1. cd into the client folder
-2. run http-server or vscode live server
+2. run http-server
 3. Open a browser 
 4. Navigate to http://localhost:8080
 5. Complete the form
