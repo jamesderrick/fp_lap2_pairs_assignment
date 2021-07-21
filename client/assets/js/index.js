@@ -5,6 +5,35 @@ if(url.includes('#')) {
 } else {
     let form = document.getElementById('postForm');
     form.addEventListener('submit', postData)
+
+    // Show Title Label when inputting title
+    const titleInput = document.getElementById('postTitle');
+    titleInput.addEventListener('input', (e) => {
+        const titleLabel = document.querySelector('.title-label');
+        showLabel(titleInput,titleLabel);
+    })
+
+    // Show Author Label when inputting your name
+    const authorInput = document.getElementById('postAuthor');
+    authorInput.addEventListener('input', (e) => {
+        const authorLabel = document.querySelector('.author-label');
+        showLabel(authorInput,authorLabel);
+    })
+
+    // Show Content Icon when inputting content
+    const contentInput = document.getElementById('postContent');
+    contentInput.addEventListener('input', (e) => {
+        const conentLabel = document.querySelector('.content-label');
+        showLabel(contentInput,conentLabel);
+    })
+}
+
+function showLabel(input,label) {
+    if(input.value !== '') {
+        label.classList.add('show')
+    } else {
+        label.classList.remove('show')
+    }
 }
 
 async function postData(e) {

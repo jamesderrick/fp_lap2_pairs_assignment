@@ -7,10 +7,43 @@ body {
 }
 
 .container {
-    width: 767px;
+    width: 900px;
     margin: auto;
     padding: 21px 0;
     position: relative;
+    display: flex;
+}
+
+.container .labels {
+    flex: 1
+}
+
+.container .labels div {
+    border-right: 1px solid rgba(0,0,0,.15);
+    text-align: right;
+    color: rgba(0,0,0,.44);
+    opacity: 0;
+}
+
+.container .labels .title-label {
+    font-size: 32px;
+    padding: 21px 10px 21px 21px;
+}
+
+.container .labels .author-label {
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.container .labels .content-label {
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border: none;
+    padding-top: 18px;
+}
+
+.container #postForm {
+    flex: 9
 }
 
 #postForm input[id="postTitle"],
@@ -18,7 +51,7 @@ body {
 #postForm input[id="postContent"],
 #postForm textarea {
     display: block;
-    width: 100%;
+    width: 85%;
     border: none;
     margin: 21px 21px 12px;
     position: relative;
@@ -50,37 +83,8 @@ body {
     font-size: 32px;
 }
 
-#postForm h1 {
-    position: relative;
-}
-
-#postForm h1::before {
-    position: absolute;
-    left: 0;
-    right: 0;
-    content: attr(data-placeholder);
-    color: rgba(0,0,0,.44);
-    font-weight: 400;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-#postForm input[id="postTitle"]::after {
-    position: absolute;
-    content: attr(data-label);
-    color: rgba(0,0,0,.44);
-    border-right: 1px solid rgba(0,0,0,.15);
-    right: 100%;
-    top: -6px;
-    bottom: -6px;
-    padding: 6px 12px;
-    font-weight: 400;
-    margin: 0 21px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .15s ease;
+#postForm .title-label {
+   display: inline-block;
 }
 
 .container h1 {
@@ -106,4 +110,8 @@ address time::before {
 
 .container p {
     margin: 12px 21px;
+}
+
+.show {
+    opacity: 1 !important;
 }
