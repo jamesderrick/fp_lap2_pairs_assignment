@@ -18,7 +18,7 @@ Usage
 
 Client Side
 1. cd into the client folder
-2. run http-server
+2. run http-server or vscode live server
 3. Open a browser 
 4. Navigate to http://localhost:8080
 5. Complete the form
@@ -51,10 +51,12 @@ id is composed of title-day-month
 - Add Docker Compose to include Mongo database
 - Client side logic for removing form and retrieving post
 - Add CSS styling
-- 
+- Code to deal with posts with same name
+- Add logic for when no post is found
+- Add 404 page
 
 ########### BUGS / OUTSTANDING DEV ###########
 
 - [] Allow images and videos to be added
 - [] Add testing suite
-- [] Add 404 page
+- [x] Add 404 page

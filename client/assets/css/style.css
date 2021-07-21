@@ -115,3 +115,37 @@ address time::before {
 .show {
     opacity: 1 !important;
 }
+
+.flex-column {
+    flex-direction: column;
+    width: 700px;
+}
+
+.error-message-container {
+    padding: 70px 0;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.error-message-container h1 {
+    font-size: 120px;
+    margin: 0;
+    color: #79828B;
+}
+
+.error-message-container p {
+    color: #79828B;
+}
+
+.error-message-container button {
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 2px solid #333;
+    border-radius: 16px;
+    cursor: pointer;
+    margin: 70px 0 15px;
+    background-color: #fff;
+    padding: 4px 12px;
+}

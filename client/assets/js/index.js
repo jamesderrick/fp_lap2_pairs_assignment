@@ -1,5 +1,6 @@
 let url = window.location.href;
 if(url.includes('#')) {
+    console.log('called');
     const id = url.split('#').pop(); 
     renderPost(id);
 } else {
@@ -68,7 +69,26 @@ async function renderPost(id) {
 
     const section = document.getElementById('main-content');
     section.textContent = ''
-    let postData = await getData(id)
+    let postData
+
+    try {
+        postData = await getData(id)
+        if(postData.message) {
+            throw new Error ('Error returned')
+        }
+        postData = postData.post
+    } catch (err) {
+        console.log(err)
+        return render404()
+    }
+    // let postData = await getData(id)
+    // console.log(postData);
+
+    // if(postData.message) {
+    //     console.log('render 404 page here')
+    //     return
+    // }
+
     postData = postData.post
     const date = new Date(postData.date * 1000)
 
@@ -82,6 +102,7 @@ async function renderPost(id) {
     const postContent = document.createElement('p')
 
     post.classList.add('container')
+    post.classList.add('flex-column')
 
     postDate.setAttribute('datetime',date.toISOString()) 
 
@@ -100,6 +121,32 @@ async function renderPost(id) {
 
     section.appendChild(post)
     
+}
+
+function render404() {
+    const section = document.getElementById('main-content');
+    section.textContent = ''
+
+    const messageContainer = document.createElement('div');
+    const messageHeading = document.createElement('h1');
+    const messageText = document.createElement('p');
+    const messageButton = document.createElement('button');
+    const homeLink = document.createElement('a');
+
+    messageContainer.classList.add('error-message-container');
+
+    messageHeading.textContent = '404';
+    messageText.textContent = 'Page Does Not Exist';
+    messageButton.textContent = 'Create New';
+    homeLink.href = 'http://localhost:8080';
+
+    homeLink.append(messageButton);
+
+    messageContainer.append(messageHeading)
+    messageContainer.append(messageText)
+    messageContainer.append(homeLink)
+
+    section.append(messageContainer)
 }
 
 function formatDate(date) {
