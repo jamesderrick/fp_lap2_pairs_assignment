@@ -1,6 +1,5 @@
 let url = window.location.href;
 if(url.includes('#')) {
-    console.log('called');
     const id = url.split('#').pop(); 
     renderPost(id);
 } else {
@@ -78,18 +77,9 @@ async function renderPost(id) {
         }
         postData = postData.post
     } catch (err) {
-        console.log(err)
         return render404()
     }
-    // let postData = await getData(id)
-    // console.log(postData);
 
-    // if(postData.message) {
-    //     console.log('render 404 page here')
-    //     return
-    // }
-
-    postData = postData.post
     const date = new Date(postData.date * 1000)
 
     const post = document.createElement('div')
